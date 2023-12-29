@@ -1,0 +1,38 @@
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+// Fonction pour calculer les annuités pour un emprunt
+double calculerAnnuites(double montantEmprunt, double tauxInteret, int dureeEmprunt) {
+    double tauxMensuel = tauxInteret / 12 / 100;
+    int nombrePaiements = dureeEmprunt * 12;
+
+    // Formule pour calculer les annuités mensuelles
+    double annuite = (montantEmprunt * tauxMensuel) / (1 - pow(1 + tauxMensuel, -nombrePaiements));
+
+    return annuite;
+}
+
+int main() {
+    // Entrées utilisateur
+    double montantEmprunt, tauxInteret;
+    int dureeEmprunt;
+
+    cout << "Entrez le montant de l'emprunt : ";
+    cin >> montantEmprunt;
+
+    cout << "Entrez le taux d'interet annuel en pourcentage : ";
+    cin >> tauxInteret;
+
+    cout << "Entrez la duree de l'emprunt en annees : ";
+    cin >> dureeEmprunt;
+
+    // Calcul des annuités
+    double annuiteMensuelle = calculerAnnuites(montantEmprunt, tauxInteret, dureeEmprunt);
+
+    // Affichage du résultat
+    cout << "Le montant des annuites mensuelles est de : " << annuiteMensuelle << " dinars" << endl;
+
+    return 0;
+}
